@@ -14,15 +14,45 @@
   </head>
   <body>
     <!----------------------------------------------------NaavBar--------------------------------------------------------------------->
-    <div id="nav_bar">
-      <div id="left_nav">
-        <img src="../public/cutlery.png" alt="logo" />
-        <a href="./index.html">ByteFeast</a>
-      </div>
-      <div id="right_nav">
-        <a href="./list.html" class="active">Our Services</a>
-        <a href="#foods">Foods</a>
-      </div>
+    <div class="container">
+      <header
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+      >
+        <div class="col-md-3 mb-2 mb-md-0">
+          <a
+            href="./index.html"
+            class="d-inline-flex link-body-emphasis text-decoration-none"
+            style="font-size: 20px; font-weight: 999"
+          >
+            <img
+              src="../public/cutlery.png"
+              height="30px"
+              style="margin-right: 5px"
+            />
+            ByteFeast
+          </a>
+        </div>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <a href="./index.html" class="nav-link px-2 link-secondary">Home</a>
+          </li>
+          <li>
+            <a href="#foods" class="nav-link px-2 link-secondary">Pricing</a>
+          </li>
+          <li>
+            <a href="./index.html#about" class="nav-link px-2 link-secondary"
+              >About</a
+            >
+          </li>
+        </ul>
+
+        <div class="col-md-3 text-end">
+          <button type="button" name="login" class="btn btn-success me-2">
+            Login
+          </button>
+        </div>
+      </header>
     </div>
     <!--------------------------------------------------baki sara hisa---------------------------------------------------------------->
     <div
@@ -47,7 +77,7 @@
             <div class="card shadow-sm" style="height: 410px; overflow: hidden">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDccbaPBKsEQRqBVBElmcDlCAsfPNtuQQ4WA&s"
-                height="150px"
+                height="220px"
               />
 
               <div class="card-body">
@@ -74,7 +104,7 @@
           <div class="col">
             <div class="card shadow-sm" style="height: 410px; overflow: hidden">
               <img
-                height="150px"
+                height="220px"
                 src="data:image/jpeg;base64,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"
               />
 
@@ -101,7 +131,7 @@
           <div class="col">
             <div class="card shadow-sm" style="height: 410px; overflow: hidden">
               <img
-                height="150px"
+                height="220px"
                 src="https://rumkisgoldenspoon.com/wp-content/uploads/2023/04/Mutton-korma.jpg"
               />
 
@@ -128,248 +158,168 @@
           </div>
 
           <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
+            <div class="card shadow-sm" style="height: 410px; overflow: hidden">
+              <img
+                height="220px"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYU7bkgqtucD8ngwFxlIK-rDPzBR4k-ZIkTA&s"
+              />
+
               <div class="card-body">
+                <h6>Butter Chicken</h6>
                 <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  Juicy chicken simmered in a silky tomato-butter gravy,
+                  bursting with flavor and finished with a hint of cream — the
+                  king of comfort food.
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button
-                      type="button"
+                      type="submit"
                       class="btn btn-sm btn-outline-secondary"
                     >
-                      View
+                      Order
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
+                    <button type="button" class="btn btn-sm">$99</button>
                   </div>
-                  <small class="text-body-secondary">9 mins</small>
                 </div>
               </div>
             </div>
           </div>
           <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
+            <div class="card shadow-sm" style="height: 410px; overflow: hidden">
+              <img
+                height="220px"
+                src="https://www.cubesnjuliennes.com/wp-content/uploads/2021/03/Best-Mutton-Biryani-Recipe-500x500.jpg"
+              />
+
               <div class="card-body">
+                <h6>Mutton Biryani</h6>
                 <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  Fragrant basmati rice layered with tender, spiced mutton —
+                  slow-cooked to perfection for that royal, melt-in-your-mouth
+                  magic.
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button
-                      type="button"
+                      type="submit"
                       class="btn btn-sm btn-outline-secondary"
                     >
-                      View
+                      Order
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
+                    <button type="button" class="btn btn-sm">$99</button>
                   </div>
-                  <small class="text-body-secondary">9 mins</small>
                 </div>
               </div>
             </div>
           </div>
           <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
+            <div class="card shadow-sm" style="height: 410px; overflow: hidden">
+              <img
+                height="220px"
+                src="https://untoldrecipesbynosheen.com/wp-content/uploads/2020/09/Nihari-new-hero-scaled.jpeg"
+              />
+
               <div class="card-body">
+                <h6>Beef Nihari</h6>
                 <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  low-cooked beef shank in a deep, flavorful gravy infused with
+                  bold spices — a traditional delicacy that warms the soul.
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button
-                      type="button"
+                      type="submit"
                       class="btn btn-sm btn-outline-secondary"
                     >
-                      View
+                      Order
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
+                    <button type="button" class="btn btn-sm">$99</button>
                   </div>
-                  <small class="text-body-secondary">9 mins</small>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
+            <div class="card shadow-sm" style="height: 410px; overflow: hidden">
+              <img
+                height="220px"
+                src="https://cookwithfaiza.net/wp-content/uploads/2024/03/1908847103_RABDI_KHEER_RECIPE__COOK_WITH_FAIZA_1.jpg"
+              />
+
               <div class="card-body">
+                <h6>Shahi Kheer</h6>
                 <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  Traditional rice pudding delicately flavored with cardamom and
+                  adorned with nuts and raisins — a sweet finale to any meal.
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button
-                      type="button"
+                      type="submit"
                       class="btn btn-sm btn-outline-secondary"
                     >
-                      View
+                      Order
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
+                    <button type="button" class="btn btn-sm">$99</button>
                   </div>
-                  <small class="text-body-secondary">9 mins</small>
                 </div>
               </div>
             </div>
           </div>
           <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
+            <div class="card shadow-sm" style="height: 410px; overflow: hidden">
+              <img
+                height="220px"
+                src="https://www.cookwithmanali.com/wp-content/uploads/2018/09/Gulab-Jamun-Indian-Sweet-500x375.jpg"
+              />
+
               <div class="card-body">
+                <h6>Gulab Jamun</h6>
                 <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  Soft, golden-fried milk dumplings soaked in a fragrant
+                  rose-water syrup, delicately infused with cardamom — a
+                  timeless South Asian classic that melts in your mouth.
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button
-                      type="button"
+                      type="submit"
                       class="btn btn-sm btn-outline-secondary"
                     >
-                      View
+                      Order
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
+                    <button type="button" class="btn btn-sm">$99</button>
                   </div>
-                  <small class="text-body-secondary">9 mins</small>
                 </div>
               </div>
             </div>
           </div>
           <div class="col">
-            <div class="card shadow-sm">
-              <svg
-                class="bd-placeholder-img card-img-top"
-                width="100%"
-                height="225"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-              </svg>
+            <div class="card shadow-sm" style="height: 410px; overflow: hidden">
+              <img
+                height="220px"
+                src="https://i0.wp.com/www.shanazrafiq.com/wp-content/uploads/2020/05/8-Shahi-Tukda-Rolls-3wm.jpg?fit=1200%2C798&ssl=1"
+              />
+
               <div class="card-body">
+                <h6>Shahi Tukda</h6>
                 <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  Golden, ghee-fried bread slices soaked in a fragrant
+                  rose-cardamom syrup, layered with rich saffron-infused rabri,
+                  and garnished with slivers of almonds.
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button
-                      type="button"
+                      type="submit"
                       class="btn btn-sm btn-outline-secondary"
                     >
-                      View
+                      Order
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
+                    <button type="button" class="btn btn-sm">$99</button>
                   </div>
-                  <small class="text-body-secondary">9 mins</small>
                 </div>
               </div>
             </div>
