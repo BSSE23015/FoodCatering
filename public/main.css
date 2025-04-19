@@ -339,14 +339,27 @@ html {
   }
 }
 
+#second_animate {
+  animation: appear 1s ease-out forwards;
+}
+
+@media (scroll-timeline: works) {
+  /* Only use scroll-driven animation in supported browsers */
+  .animate,
+  #second_animate {
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+}
+
 #sign_in_container {
   height: 100vh;
   width: 80%;
   margin: 0 auto;
-  background-image: url("https://www.shutterstock.com/image-photo/salad-tomatoes-greens-dressing-oil-600nw-269131160.jpg");
+  /* background-image: url("https://www.shutterstock.com/image-photo/salad-tomatoes-greens-dressing-oil-600nw-269131160.jpg");
   background-position: center;
   object-fit: cover;
-  background-size: cover;
+  background-size: cover; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -428,10 +441,10 @@ html {
   height: 100vh;
   width: 80%;
   margin: 0 auto;
-  background-image: url("https://www.shutterstock.com/image-photo/salad-tomatoes-greens-dressing-oil-600nw-269131160.jpg");
+  /* background-image: url("https://www.shutterstock.com/image-photo/salad-tomatoes-greens-dressing-oil-600nw-269131160.jpg");
   background-position: center;
   object-fit: cover;
-  background-size: cover;
+  background-size: cover; */
   display: flex;
   align-items: center;
   justify-content: center;
