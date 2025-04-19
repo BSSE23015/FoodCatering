@@ -35,7 +35,9 @@
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li>
-            <a href="../index.html" class="nav-link px-2 link-secondary">Home</a>
+            <a href="../index.html" class="nav-link px-2 link-secondary"
+              >Home</a
+            >
           </li>
           <li>
             <a href="#foods" class="nav-link px-2 link-secondary">Pricing</a>
@@ -48,8 +50,13 @@
         </ul>
 
         <div class="col-md-3 text-end">
-          <button type="button" name="login" class="btn btn-success me-2">
-            Login
+          <button
+            type="button"
+            class="btn btn-success me-2"
+            data-bs-toggle="modal"
+            data-bs-target="#cartModal"
+          >
+            Cart (<span id="navCartCount">0</span>)
           </button>
         </div>
       </header>
@@ -380,11 +387,118 @@
         </ul>
       </footer>
     </div>
+    <!-- Add this cart modal at the end of body before scripts -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Your Cart (<span id="cartCount">0</span>)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div id="cartItems" class="mb-3">
+              <!-- Cart items will be added here -->
+            </div>
+            <hr />
+            <h5>Total: $<span id="cartTotal">0</span></h5>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!------------------------------------------------Bootstrap js link--------------------------------------------------------------->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
       crossorigin="anonymous"
     ></script>
+    <script>
+      // Cart array to store items
+      let cart = [];
+
+      // Add to cart functionality
+      document.querySelectorAll(".btn-outline-secondary").forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".card");
+          const name = card.querySelector("h6").textContent;
+
+          const price = parseFloat(
+            card
+              .querySelector(".btn-group .btn-sm:last-child")
+              .textContent.replace("$", "")
+          );
+          // Check if item already exists in cart
+          const existingItem = cart.find((item) => item.name === name);
+          if (existingItem) {
+            existingItem.quantity++;
+          } else {
+            cart.push({ name, price, quantity: 1 });
+          }
+
+          updateCartDisplay();
+        });
+      });
+
+      // Update cart display
+      function updateCartDisplay() {
+        const cartItems = document.getElementById("cartItems");
+        const cartTotal = document.getElementById("cartTotal");
+        const cartCounts = document.querySelectorAll(
+          "#cartCount, #navCartCount"
+        );
+
+        // Clear existing items
+        cartItems.innerHTML = "";
+
+        // Add items to modal
+        let total = 0;
+        cart.forEach((item, index) => {
+          total += item.price * item.quantity;
+          cartItems.innerHTML += `
+            <div class="d-flex justify-content-between mb-2">
+              <div>
+                ${item.name} 
+                <small class="text-muted">x${item.quantity}</small>
+              </div>
+              <div>
+                $${(item.price * item.quantity).toFixed(2)}
+                <button class="btn btn-sm btn-danger ms-2" onclick="removeItem(${index})">×</button>
+              </div>
+            </div>
+          `;
+        });
+
+        // Update totals
+        cartTotal.textContent = total.toFixed(2);
+        cartCounts.forEach(
+          (el) =>
+            (el.textContent = cart.reduce(
+              (sum, item) => sum + item.quantity,
+              0
+            ))
+        );
+      }
+
+      // Remove item from cart
+      function removeItem(index) {
+        cart.splice(index, 1);
+        updateCartDisplay();
+      }
+    </script>
   </body>
 </html>
