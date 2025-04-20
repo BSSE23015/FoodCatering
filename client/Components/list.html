@@ -14,53 +14,69 @@
   </head>
   <body>
     <!----------------------------------------------------NavBar--------------------------------------------------------------------->
-    <div class="container">
-      <header
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
-      >
-        <div class="col-md-3 mb-2 mb-md-0">
-          <a
-            href="../index.html"
-            class="d-inline-flex link-body-emphasis text-decoration-none"
-            style="font-size: 20px; font-weight: 999"
-          >
-            <img
-              src="../public/cutlery.png"
-              height="30px"
-              style="margin-right: 5px"
-            />
-            ByteFeast
-          </a>
+
+    <nav class="navbar bg-body-tertiary fixed-top">
+      <div class="container-fluid">
+        <div id="left_nav">
+          <img src="../public/cutlery.png" style="height: 25px" />
+          <a class="navbar-brand" href="../index.html">ByteFeast</a>
         </div>
-
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li>
-            <a href="../index.html" class="nav-link px-2 link-secondary"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a href="#foods" class="nav-link px-2 link-secondary">Pricing</a>
-          </li>
-          <li>
-            <a href="../index.html#about" class="nav-link px-2 link-secondary"
-              >About</a
-            >
-          </li>
-        </ul>
-
-        <div class="col-md-3 text-end">
+        <div id="right_nav">
           <button
+            class="navbar-toggler"
             type="button"
-            class="btn btn-success me-2"
-            data-bs-toggle="modal"
-            data-bs-target="#cartModal"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
           >
-            Cart (<span id="navCartCount">0</span>)
+            <span class="navbar-toggler-icon"></span>
           </button>
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                ByteFeast
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="list.html">Foods</a>
+                </li>
+                <li class="nav-item">
+                  <div class="col-md-3 text-end" id="cart">
+                    <button
+                      type="button"
+                      class="btn btn-success me-2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#cartModal"
+                    >
+                      Cart (<span id="navCartCount">0</span>)
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </header>
-    </div>
+      </div>
+    </nav>
     <!--------------------------------------------------baki sara hisa---------------------------------------------------------------->
     <div
       class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary"
@@ -96,11 +112,8 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Order
+                    <button type="submit" class="btn btn-sm btn-success">
+                      Add+
                     </button>
                     <button type="button" class="btn btn-sm">$99</button>
                   </div>
@@ -123,11 +136,8 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Order
+                    <button type="submit" class="btn btn-sm btn-success">
+                      Add+
                     </button>
                     <button type="button" class="btn btn-sm">$99</button>
                   </div>
@@ -151,11 +161,8 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Order
+                    <button type="submit" class="btn btn-sm btn-success">
+                      Add+
                     </button>
                     <button type="button" class="btn btn-sm">$99</button>
                   </div>
@@ -180,11 +187,8 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Order
+                    <button type="submit" class="btn btn-sm btn-success">
+                      Add+
                     </button>
                     <button type="button" class="btn btn-sm">$99</button>
                   </div>
@@ -208,11 +212,8 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Order
+                    <button type="submit" class="btn btn-sm btn-success">
+                      Add+
                     </button>
                     <button type="button" class="btn btn-sm">$99</button>
                   </div>
@@ -235,11 +236,8 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Order
+                    <button type="submit" class="btn btn-sm btn-success">
+                      Add+
                     </button>
                     <button type="button" class="btn btn-sm">$99</button>
                   </div>
@@ -263,11 +261,8 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Order
+                    <button type="submit" class="btn btn-sm btn-success">
+                      Add+
                     </button>
                     <button type="button" class="btn btn-sm">$99</button>
                   </div>
@@ -291,11 +286,8 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Order
+                    <button type="submit" class="btn btn-sm btn-success">
+                      Add+
                     </button>
                     <button type="button" class="btn btn-sm">$99</button>
                   </div>
@@ -319,11 +311,8 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button
-                      type="submit"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Order
+                    <button type="submit" class="btn btn-sm btn-success">
+                      Add+
                     </button>
                     <button type="button" class="btn btn-sm">$99</button>
                   </div>
@@ -432,7 +421,7 @@
       let cart = [];
 
       // Add to cart functionality
-      document.querySelectorAll(".btn-outline-secondary").forEach((button) => {
+      document.querySelectorAll(".btn-success").forEach((button) => {
         button.addEventListener("click", () => {
           const card = button.closest(".card");
           const name = card.querySelector("h6").textContent;

@@ -499,3 +499,19 @@ html {
   background-color: #219150;
   transform: scale(0.99);
 }
+header {
+  height: 8vh;
+  display: flex;
+  justify-content: space-ev;
+  align-items: center;
+  box-shadow: 3px 0px 5px black;
+  padding: 20px;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+}
+
