@@ -410,6 +410,32 @@
         </div>
       </div>
     </div>
+    <div
+      aria-live="polite"
+      aria-atomic="true"
+      class="position-fixed bottom-0 end-0 p-3"
+      style="z-index: 1055"
+    >
+      <div
+        id="cartToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <strong class="me-auto">Cart</strong>
+          <small>Just now</small>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body" id="cartToastBody">Item added to cart!</div>
+      </div>
+    </div>
     <!------------------------------------------------Bootstrap js link--------------------------------------------------------------->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
@@ -417,7 +443,6 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      // Cart array to store items
       let cart = [];
 
       // Add to cart functionality
@@ -431,7 +456,7 @@
               .querySelector(".btn-group .btn-sm:last-child")
               .textContent.replace("$", "")
           );
-          // Check if item already exists in cart
+
           const existingItem = cart.find((item) => item.name === name);
           if (existingItem) {
             existingItem.quantity++;
@@ -440,10 +465,10 @@
           }
 
           updateCartDisplay();
+          showToast(`${name} added to cart!`);
         });
       });
 
-      // Update cart display
       function updateCartDisplay() {
         const cartItems = document.getElementById("cartItems");
         const cartTotal = document.getElementById("cartTotal");
@@ -451,11 +476,9 @@
           "#cartCount, #navCartCount"
         );
 
-        // Clear existing items
         cartItems.innerHTML = "";
-
-        // Add items to modal
         let total = 0;
+
         cart.forEach((item, index) => {
           total += item.price * item.quantity;
           cartItems.innerHTML += `
@@ -472,7 +495,6 @@
           `;
         });
 
-        // Update totals
         cartTotal.textContent = total.toFixed(2);
         cartCounts.forEach(
           (el) =>
@@ -483,10 +505,19 @@
         );
       }
 
-      // Remove item from cart
       function removeItem(index) {
         cart.splice(index, 1);
         updateCartDisplay();
+      }
+
+      // Show toast function
+      function showToast(message) {
+        const toastBody = document.getElementById("cartToastBody");
+        toastBody.textContent = message;
+
+        const toastElement = document.getElementById("cartToast");
+        const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
+        toast.show();
       }
     </script>
   </body>
