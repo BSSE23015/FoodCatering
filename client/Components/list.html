@@ -405,7 +405,9 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Checkout</button>
+            <button type="button" class="btn btn-primary btn-checkout">
+              Checkout
+            </button>
           </div>
         </div>
       </div>
@@ -484,7 +486,7 @@
           cartItems.innerHTML += `
             <div class="d-flex justify-content-between mb-2">
               <div>
-                ${item.name} 
+                ${item.name}
                 <small class="text-muted">x${item.quantity}</small>
               </div>
               <div>
@@ -519,6 +521,14 @@
         const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
         toast.show();
       }
+      let signIn = true;
+      const checkBtn = document.querySelector(".btn-checkout");
+      checkBtn.addEventListener("click", () => {
+        if (!signIn) {
+          // Redirect to sign-in page
+          window.location.href = "http://127.0.0.1:3000/client/Components/sign_in.html"; // change the URL to your actual sign-in page
+        }
+      });
     </script>
   </body>
 </html>
