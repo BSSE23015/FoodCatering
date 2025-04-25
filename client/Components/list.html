@@ -376,7 +376,7 @@
         </ul>
       </footer>
     </div>
-    <!-- Add this cart modal at the end of body before scripts -->
+    <!-- cart modal  -->
     <div class="modal fade" id="cartModal" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -521,12 +521,13 @@
         const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
         toast.show();
       }
-      let signIn = true;
+      let signIn = false;
       const checkBtn = document.querySelector(".btn-checkout");
       checkBtn.addEventListener("click", () => {
         if (!signIn) {
           // Redirect to sign-in page
-          window.location.href = "http://127.0.0.1:3000/client/Components/sign_in.html"; // change the URL to your actual sign-in page
+          window.location.href =
+            "http://127.0.0.1:3000/client/Components/sign_in.html"; // change the URL to your actual sign-in page
         }
       });
     </script>
