@@ -4,17 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./admin.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <title>Admin Dashboard</title>
   </head>
   <body>
     <div class="dashboard">
       <div class="topBar">
-        <div class="logo">logo</div>
-        <div class="search">search</div>
-        <div class="user-profile">user-profile</div>
+        <div class="logo">
+          <i class="ri-restaurant-line"></i>
+          <span>ByteFeast</span>
+        </div>
+        <div class="search">
+          <i class="ri-search-line"></i>
+          <input type="text" placeholder="Search..." />
+        </div>
+        <div class="user-profile">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2WGDjRp9dXZGg3fos8Xv3j35-C7Ks12NwIA&s"
+            alt="prfile"
+          />
+        </div>
       </div>
-      <div class="sidebar">side bar</div>
-      <div class="main-content">main content</div>
+      <div class="sidebar">
+        <div class="sideBarTop">
+          <a href="#" class="active"
+            ><i class="ri-dashboard-line"></i>Dashboard</a
+          >
+          <a href="#"> <i class="ri-team-line"></i>Customers</a>
+          <a href="#"><i class="ri-line-chart-line"></i>Analytics</a>
+        </div>
+        <div class="sideBarBottom">
+          <a href="#"><i class="ri-question-line"></i>Help</a>
+          <a href="#"><i class="ri-tools-line"></i>Settings</a>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="cards">
+          <div class="card">
+            <i class="ri-user-line"></i>
+            <h3>Total Customers</h3>
+            <p>1235</p>
+          </div>
+          <div class="card">
+            <i class="ri-shopping-bag-line"></i>
+            <h3>Total Sales</h3>
+            <p>$45,500</p>
+          </div>
+          <div class="card">
+            <i class="ri-message-3-line"></i>
+            <h3>Messages</h3>
+            <p>1235</p>
+          </div>
+          <div class="card">
+            <i class="ri-line-chart-line"></i>
+            <h3>Growth</h3>
+            <p>1235</p>
+          </div>
+        </div>
+        <div class="table-container"></div>
+        <div class="activity-feed"></div>
+      </div>
     </div>
   </body>
 </html>
