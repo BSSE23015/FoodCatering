@@ -12,16 +12,53 @@
       <form id="sign_up_form" method="post" action="">
         <h2>Sign Up</h2>
         <label>Username</label>
-        <input name="username" type="text" required />
+        <input name="username" type="text" id="username" required />
         <label>Email</label>
-        <input name="email" type="email" required />
+        <input name="email" type="email" id="email" required />
         <label>Phone Number</label>
-        <input type="number" name="phonenumber" required />
+        <input type="number" name="phonenumber" id="phonenumber" required />
         <label>Password</label>
-        <input type="password" name="password" required />
+        <input type="password" name="password" id="password" required />
 
         <button type="submit">Sign Up</button>
       </form>
     </div>
+    <script>
+      const signUpform = document.getElementById("sign_up_form");
+
+      signUpform.addEventListener("submit", function (e) {
+        e.preventDefault(); // Stop page from refreshing
+
+        const sign_email = document.getElementById("email").value;
+        const phone = document.getElementById("phonenumber").value;
+        const username = document.getElementById("username").value;
+        const sign_password = document.getElementById("password").value;
+
+        // Save to localStorage (optional, individual fields)
+        localStorage.setItem("sign_email", sign_email);
+        localStorage.setItem("username", username);
+        localStorage.setItem("phonenumber", phone);
+        localStorage.setItem("sign_password", sign_password);
+
+        // Create a user object
+        const user = {
+          username: username,
+          email: sign_email,
+          phoneNumber: phone,
+        };
+
+        // Fetch users from localStorage or initialize empty array if not available
+        let users = JSON.parse(localStorage.getItem("register_users")) || [];
+
+        // Add the new user to the users array
+        users.push(user);
+
+        // Save the updated users array back to localStorage
+        localStorage.setItem("register_users", JSON.stringify(users));
+
+        // Redirect to Sign In page
+        window.location.href = "./sign_in.html";
+      });
+    </script>
   </body>
 </html>

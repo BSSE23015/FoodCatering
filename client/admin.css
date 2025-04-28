@@ -120,3 +120,59 @@
 .card:hover::before {
   transform: translateX(100%);
 }
+.card i {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem;
+  display: inline-block;
+  border-radius: 12px;
+}
+.card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.card p {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+}
+.table-container {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+tr:last-child td {
+  border-bottom: none;
+}
+th {
+  font-weight: 600;
+  color: #666;
+}
+.status {
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+.status.active {
+  background: linear-gradient(135deg, aqua 0%, #4facfe 100%);
+  color: white;
+}
+.status.pending {
+  background: linear-gradient(135deg, #fd6365 0%, #fda085 100%);
+  color: white;
+}

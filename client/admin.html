@@ -64,9 +64,52 @@
             <p>15.2%</p>
           </div>
         </div>
-        <div class="table-container"></div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <!-- Table heading section -->
+              <tr>
+                <th>Customer</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="userTableBody">
+              <!-- Table body where users will be added -->
+              <!-- JS will insert rows here -->
+            </tbody>
+          </table>
+        </div>
+
         <div class="activity-feed"></div>
       </div>
     </div>
+    <script>
+      // Fetch users from localStorage
+      const users = JSON.parse(localStorage.getItem("register_users")) || [];
+
+      const tableBody = document.getElementById("userTableBody");
+
+      // Loop through each user and create a row
+      users.forEach((user, index) => {
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+    <td>${user.username}</td>
+    <td>${user.email}</td>
+    <td><span class="status active">Active</span></td>
+    <td><i class="ri-more-2-fill"></i></td>
+  `;
+
+        tableBody.appendChild(tr);
+      });
+
+      // If you want to update Total Customers
+      const totalCustomersCard = document.querySelector(".card h3 + p");
+      if (totalCustomersCard) {
+        totalCustomersCard.innerText = users.length;
+      }
+    </script>
   </body>
 </html>

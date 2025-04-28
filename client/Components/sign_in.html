@@ -12,9 +12,9 @@
       <form id="sign_in_form" method="post" action="">
         <h2>Sign In</h2>
         <label>Email</label>
-        <input name="email" type="email" required />
+        <input name="email" type="email" id="email" required />
         <label>Password</label>
-        <input type="password" name="password" required />
+        <input type="password" name="password" id="password" required />
         <button type="submit">Sign In</button>
         <p>
           Don't have accout?<span
@@ -23,5 +23,28 @@
         </p>
       </form>
     </div>
+    <script>
+      const loginForm = document.getElementById("sign_in_form");
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // Stop page from refreshing
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // Save to localStorage
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password); // not recommended for real-world apps!
+        if (
+          localStorage.getItem("sign_email") === email &&
+          localStorage.getItem("sign_password") === password
+        ) {
+          // Redirect to Admin Dashboard
+          window.location.href = "../index.html";
+        } else {
+          alert("Invalid email or password");
+        }
+      });
+    </script>
   </body>
 </html>
