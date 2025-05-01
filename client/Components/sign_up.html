@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="stylesheet" href="../public/main.css" />
     <title>Sign Up</title>
   </head>
@@ -23,40 +22,47 @@
         <button type="submit">Sign Up</button>
       </form>
     </div>
-    <script>
-      const signUpform = document.getElementById("sign_up_form");
 
-      signUpform.addEventListener("submit", function (e) {
+    <script>
+      const signUpForm = document.getElementById("sign_up_form");
+
+      signUpForm.addEventListener("submit", function (e) {
         e.preventDefault(); // Stop page from refreshing
 
-        const sign_email = document.getElementById("email").value;
-        const phone = document.getElementById("phonenumber").value;
-        const username = document.getElementById("username").value;
-        const sign_password = document.getElementById("password").value;
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phonenumber").value.trim();
+        const password = document.getElementById("password").value;
 
-        // Save to localStorage (optional, individual fields)
-        localStorage.setItem("sign_email", sign_email);
-        localStorage.setItem("username", username);
-        localStorage.setItem("phonenumber", phone);
-        localStorage.setItem("sign_password", sign_password);
-
-        // Create a user object
-        const user = {
-          username: username,
-          email: sign_email,
-          phoneNumber: phone,
-        };
-
-        // Fetch users from localStorage or initialize empty array if not available
+        // Fetch existing users or empty array
         let users = JSON.parse(localStorage.getItem("register_users")) || [];
 
-        // Add the new user to the users array
-        users.push(user);
+        // Check for duplicate email
+        const emailExists = users.some((user) => user.email === email);
+        if (emailExists) {
+          alert("Email already registered. Please use a different one.");
+          return; // Stop the form from submitting
+        }
 
-        // Save the updated users array back to localStorage
+        // Create new user object
+        const newUser = {
+          username: username,
+          email: email,
+          phoneNumber: phone,
+          password: password,
+        };
+
+        // Save in localStorage
+        users.push(newUser);
         localStorage.setItem("register_users", JSON.stringify(users));
 
-        // Redirect to Sign In page
+        // Also save session info
+        localStorage.setItem("sign_email", email);
+        localStorage.setItem("username", username);
+        localStorage.setItem("phonenumber", phone);
+        localStorage.setItem("sign_password", password);
+
+        // Redirect to sign-in page
         window.location.href = "./sign_in.html";
       });
     </script>
