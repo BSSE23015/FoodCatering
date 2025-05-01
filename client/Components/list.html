@@ -524,13 +524,34 @@
         const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
         toast.show();
       }
-      let signIn = false;
+      let signIn = localStorage.getItem("signIn");
       const checkBtn = document.querySelector(".btn-checkout");
       checkBtn.addEventListener("click", () => {
         if (!signIn) {
           // Redirect to sign-in page
           window.location.href =
             "http://127.0.0.1:3000/client/Components/sign_in.html"; // change the URL to your actual sign-in page
+        } else {
+          const email = localStorage.getItem("email");
+          if (!email || cart.length === 0) {
+            alert("Please make sure you're signed in and have items in cart.");
+            return;
+          }
+
+          const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+          orders.push({
+            email: email,
+            cart: cart,
+            status: "Pending",
+          });
+
+          localStorage.setItem("orders", JSON.stringify(orders));
+          cart = []; // Clear the cart after order
+          updateCartDisplay();
+
+          alert("Order placed! Redirecting to Admin Page...");
+          window.location.href = "../admin.html";
         }
       });
     </script>

@@ -15,7 +15,9 @@
       <div class="topBar">
         <div class="logo">
           <i class="ri-restaurant-line"></i>
-          <span>ByteFeast</span>
+          <a href="./index.html" style="text-decoration: none; color: black"
+            ><span>ByteFeast</span></a
+          >
         </div>
         <div class="search">
           <i class="ri-search-line"></i>
@@ -33,12 +35,13 @@
           <a href="#" class="active"
             ><i class="ri-dashboard-line"></i>Dashboard</a
           >
-          <a href="#"> <i class="ri-team-line"></i>Customers</a>
-          <a href="#"><i class="ri-line-chart-line"></i>Analytics</a>
+          <a href="#userTableBody"> <i class="ri-team-line"></i>Customers</a>
+          <a href="#ordersTableBody"
+            ><i class="ri-order-play-fill"></i>Orders</a
+          >
         </div>
         <div class="sideBarBottom">
-          <a href="#"><i class="ri-question-line"></i>Help</a>
-          <a href="#"><i class="ri-tools-line"></i>Settings</a>
+          <a href="#userTableBody"><i class="ri-tools-line"></i>Settings</a>
         </div>
       </div>
       <div class="main-content">
@@ -69,8 +72,8 @@
             <thead>
               <!-- Table heading section -->
               <tr>
-                <th>Customer</th>
-                <th>Email</th>
+                <th>Customer's Name</th>
+                <th>Customers's Email</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
@@ -81,8 +84,20 @@
             </tbody>
           </table>
         </div>
-
-        <div class="activity-feed"></div>
+        <div class="table-container">
+          <h2 class="mt-4 text-center">Orders Dashboard</h2>
+          <table class="table table-bordered mt-3">
+            <thead>
+              <tr>
+                <th>User Email</th>
+                <th>Order Details</th>
+                <th>Total Price</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody"></tbody>
+          </table>
+        </div>
       </div>
     </div>
     <script>
@@ -98,7 +113,7 @@
         tr.innerHTML = `
     <td>${user.username}</td>
     <td>${user.email}</td>
-    <td><span class="status active">Active</span></td>
+    <td><span class="status pending">Active</span></td>
     <td><i class="ri-more-2-fill"></i></td>
   `;
 
@@ -110,6 +125,63 @@
       if (totalCustomersCard) {
         totalCustomersCard.innerText = users.length;
       }
+      const orderTableBody = document.getElementById("ordersTableBody");
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+      function renderOrders() {
+        orderTableBody.innerHTML = "";
+
+        orders.forEach((order, index) => {
+          const orderDetails = order.cart
+            .map((item) => `${item.name} x${item.quantity}`)
+            .join("<br>");
+          const orderTotal = order.cart.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          );
+          orderTableBody.innerHTML += `
+    <tr>
+      <td>${order.email}</td>
+      <td>${orderDetails}</td>
+      <td>$${orderTotal.toFixed(2)}</td>
+      <td>
+        <span id="status-${index}">${order.status}</span>
+        ${
+          order.status === "Pending"
+            ? `<button class="btn btn-sm btn-success ms-2" onclick="confirmOrder(${index})">Confirm</button>`
+            : ""
+        }
+      </td>
+    </tr>
+  `;
+        });
+      }
+
+      function confirmOrder(index) {
+        orders[index].status = "Confirmed";
+        localStorage.setItem("orders", JSON.stringify(orders));
+        renderOrders();
+      }
+
+      renderOrders();
+      // Dynamically update Total Sales from orders
+      function calculateTotalSales() {
+        let totalSales = 0;
+
+        orders.forEach((order) => {
+          order.cart.forEach((item) => {
+            totalSales += item.price * item.quantity;
+          });
+        });
+
+        // Find the Total Sales <p> element and update it
+        const salesCard = document.querySelectorAll(".card h3 + p")[1]; // Second <p> is for Total Sales
+        if (salesCard) {
+          salesCard.innerText = `$${totalSales.toFixed(2)}`;
+        }
+      }
+
+      calculateTotalSales();
     </script>
   </body>
 </html>
