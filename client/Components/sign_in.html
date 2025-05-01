@@ -25,23 +25,33 @@
     </div>
     <script>
       const loginForm = document.getElementById("sign_in_form");
-
       loginForm.addEventListener("submit", function (e) {
-        e.preventDefault(); // Stop page from refreshing
+        e.preventDefault();
 
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
+        const admin_email = "admin@gmail.com";
+        const admin_pass = "1111";
 
-        // Save to localStorage
-        localStorage.setItem("email", email);
-        localStorage.setItem("password", password); // not recommended for real-world apps!
-        if (
-          localStorage.getItem("sign_email") === email &&
-          localStorage.getItem("sign_password") === password
-        ) {
-          // Redirect to Admin Dashboard
-          let signIn = true;
-          localStorage.setItem("signIn", signIn);
+        // Check for admin login first
+        if (email === admin_email && password === admin_pass) {
+          localStorage.setItem("email", admin_email);
+          localStorage.setItem("password", admin_pass);
+          localStorage.setItem("signIn", true);
+          window.location.href = "../admin.html";
+          return;
+        }
+
+        // Otherwise, check for regular users
+        let users = JSON.parse(localStorage.getItem("register_users")) || [];
+        const user = users.find(
+          (user) => user.email === email && user.password === password
+        );
+
+        if (user) {
+          localStorage.setItem("email", email);
+          localStorage.setItem("password", password);
+          localStorage.setItem("signIn", true);
           window.location.href = "../index.html";
         } else {
           alert("Invalid email or password");
